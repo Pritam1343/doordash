@@ -9,7 +9,5 @@ phases:
       - echo "Packaging Lambda function..."
       - zip -r deployment_package.zip .
       - echo "Deploying to Lambda..."
-      - aws lambda update-function-code \
-          --function-name read-csv-from-s3-pandas \
-          --zip-file fileb://deployment_package.zip
+      - aws lambda update-function-code --function-name read-csv-from-s3-pandas --zip-file fileb://deployment_package.zip
       - echo "Deployment complete!"

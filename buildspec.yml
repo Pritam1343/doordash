@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  build:
+    commands:
+      - echo "Packaging Lambda function..."
+      - zip -r deployment_package.zip .
+      - echo "Deploying to Lambda..."
+      - aws lambda update-function-code \
+          --function-name read-csv-from-s3-pandas \
+          --zip-file fileb://deployment_package.zip
+      - echo "Deployment complete!"
